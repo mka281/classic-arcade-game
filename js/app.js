@@ -31,28 +31,33 @@ Enemy.prototype.render = function() {
 
 // Now write your own player class
 var Player = function() {
-  var startingX = 202;
-  var startingY = 390
-  this.x = startingX;
-  this.y = startingY;
-  this.sprite = 'images/char-boy.png'
+  this.startingX = 202;
+  this.startingY = 390;
+  this.x = this.startingX;
+  this.y = this.startingY;
+  this.sprite = 'images/char-boy.png';
 }
 
-// This class requires an update(), render() and
-// a handleInput() method.
+// Check whether player reached to water
 Player.prototype.update = function() {
+  if (this.y === -25) {
+    this.reset();
+  }
 };
 
+// Return char to starting point
 Player.prototype.reset = function() {
-
+  this.x = this.startingX;
+  this.y = this.startingY;
 };
 
+// Render char on screen
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Move the char if it did not reach to the border
 Player.prototype.handleInput = function(allowedKeys) {
-  // Move the char if it did not reach to the border
   switch (allowedKeys) {
     case "left":
       if (this.x>0) {
@@ -65,6 +70,7 @@ Player.prototype.handleInput = function(allowedKeys) {
       }
       break;
     case "up":
+      // There is no checling for border here, because in that case reset function will be called
       this.y-=83;
       break;
     case "down":
