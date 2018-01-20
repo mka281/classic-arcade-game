@@ -32,15 +32,15 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 var Player = function() {
   this.x = 202;
-  this.y = 404;
+  this.y = 390;
   this.sprite = 'images/char-boy.png'
 }
 
 // This class requires an update(), render() and
 // a handleInput() method.
 Player.prototype.update = function() {
-
 };
+
 
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -60,13 +60,11 @@ Player.prototype.handleInput = function(allowedKeys) {
       }
       break;
     case "up":
-      if (this.y>76) {
-        this.y-=82;
-      }
+      this.y-=83;
       break;
     case "down":
-      if (this.y<404) {
-        this.y+=82;
+      if (this.y<390) {
+        this.y+=83;
       }
       break;
   }
