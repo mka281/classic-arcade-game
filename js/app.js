@@ -31,8 +31,10 @@ Enemy.prototype.render = function() {
 
 // Now write your own player class
 var Player = function() {
-  this.x = 202;
-  this.y = 390;
+  var startingX = 202;
+  var startingY = 390
+  this.x = startingX;
+  this.y = startingY;
   this.sprite = 'images/char-boy.png'
 }
 
@@ -41,6 +43,9 @@ var Player = function() {
 Player.prototype.update = function() {
 };
 
+Player.prototype.reset = function() {
+
+};
 
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
