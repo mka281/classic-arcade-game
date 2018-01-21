@@ -4,7 +4,7 @@ The starter code is [here](https://github.com/udacity/frontend-nanodegree-arcade
 
 ## To reach the game:
 
-1. Visit [here](mka281.github.io/classic-arcade-game)
+1. Visit [here](https://mka281.github.io/classic-arcade-game)
 
 or
 
