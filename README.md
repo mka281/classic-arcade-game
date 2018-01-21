@@ -1,5 +1,7 @@
 This project is created for Udacity's [Front-end Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). 
 
+The starter code is [here](https://github.com/udacity/frontend-nanodegree-arcade-game)
+
 ## To reach the game:
 
 1. Visit [here](mka281.github.io/classic-arcade-game)
