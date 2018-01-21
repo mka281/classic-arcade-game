@@ -1,31 +1,31 @@
 // Enemies our player must avoid
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+    // Define a starting point for enemy
     var randomX = Math.floor(Math.random() * 500);
     var randomY = Math.floor(Math.random() * 3);
     this.x = -500 + randomX;
     this.y = 58 + randomY*83;
+    // Define its speed
     var randomSpeed = Math.floor(Math.random() * 200);;
     this.speed = 150 + randomSpeed;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // The image/sprite for our enemies
     this.sprite = 'images/enemy-bug.png';
 };
 
-// Update the enemy's position, required method for game
+// Update the enemy's position
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    // dt parameter will ensure the game runs at the same speed for all computers.
     if (this.x < 505) {
+      // Move to the right according to enemy's speed
       this.x += (this.speed * dt);
     } else {
+      // Remove the enemy that leaves the canvas and create a new one
       var index = allEnemies.indexOf(this);
       allEnemies.splice(index, 1);
       allEnemies.push(new Enemy);
     }
+    // Check whether the enemy collide with the player
     var handleCollision = this.handleCollision.bind(this);
     handleCollision();
 };
@@ -76,7 +76,7 @@ function restartGame() {
   for (var i=0; i<3; i++) {
     heartDiv.appendChild(img.cloneNode(true));
   }
-  // Make score zero and display
+  // Make score zero and display it
   score = 0;
   document.getElementById('score').textContent = score;
 }
@@ -125,35 +125,32 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(allowedKeys) {
   switch (allowedKeys) {
     case "left":
-      if (this.x>0) {
-        this.x-=101;
-      }
-      break;
+    if (this.x>0) {
+      this.x-=101;
+    }
+    break;
     case "right":
-      if (this.x<404) {
-        this.x+=101;
-      }
-      break;
+    if (this.x<404) {
+      this.x+=101;
+    }
+    break;
     case "up":
-      if (this.y>-25) {
-        this.y-=83;
-        break;
-      }
-    case "down":
-      if (this.y<390) {
-        this.y+=83;
-      }
+    if (this.y>-25) {
+      this.y-=83;
       break;
+    }
+    case "down":
+    if (this.y<390) {
+      this.y+=83;
+    }
+    break;
   }
 };
 
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
+// Create enemies and place them in allEnemies array
 var allEnemies = [];
 var enemyNumber = 6;
-
-// Create enemies
 function createEnemies() {
   for (var i = 0; i<enemyNumber; i++) {
     allEnemies.push(new Enemy);
@@ -162,19 +159,19 @@ function createEnemies() {
 createEnemies();
 
 
-// Place the player object in a variable called player
+// Place the player object in player variable
 var player = new Player ();
 
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// This listens for key presses and sends the keys to
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+  player.handleInput(allowedKeys[e.keyCode]);
 });
