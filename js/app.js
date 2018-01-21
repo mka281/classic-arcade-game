@@ -75,6 +75,8 @@ function restartGame() {
   for (var i=0; i<3; i++) {
     heartDiv.appendChild(img.cloneNode(true));
   }
+  // Return char to starting point
+  player.reset();
   // Make score zero and display it
   score = 0;
   document.getElementById('score').textContent = score;
