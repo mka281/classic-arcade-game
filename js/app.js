@@ -26,8 +26,7 @@ Enemy.prototype.update = function(dt) {
       allEnemies.push(new Enemy);
     }
     // Check whether the enemy collide with the player
-    var handleCollision = this.handleCollision.bind(this);
-    handleCollision();
+    this.handleCollision();
 };
 
 // Check collision, if true, return char and restart score
