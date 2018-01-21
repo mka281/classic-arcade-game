@@ -24,8 +24,8 @@ Enemy.prototype.update = function(dt) {
     } else {
       this.x = -200
     }
-    var handle = this.handleCollision.bind(this);
-    handle();
+    var handleCollision = this.handleCollision.bind(this);
+    handleCollision();
 };
 
 // Check collision, if true, return char and restart score
@@ -34,9 +34,19 @@ Enemy.prototype.handleCollision = function() {
         this.y === player.y) {
   		score = 0;
   		document.getElementById('score').textContent = score;
+      this.decreaseHeart();
   		player.reset();
     }
 };
+
+// Decrease heart number if collision happened
+Enemy.prototype.decreaseHeart = function() {
+  var hearts = document.getElementsByClassName("heart");
+  hearts[0].remove();
+  if (hearts.length === 0) {
+    displayResult();
+  }
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {

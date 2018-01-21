@@ -6,12 +6,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <!-- Score panel -->
     <div id="score-panel">
       <p>Score: <span id="score">0</span></p>
-      <img src="images/Heart.png">
-      <img src="images/Heart.png">
-      <img src="images/Heart.png">
+      <img class="heart" src="images/Heart.png">
+      <img class="heart" src="images/Heart.png">
+      <img class="heart" src="images/Heart.png">
     </div>
+
+    <!-- Result Modal -->
+    <div class="result-modal">
+      <p>Your Score is <span id="result"></span> <p>
+      <button class="button restart">Play Again!</button>
+    </div>
+
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
