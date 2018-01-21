@@ -30,10 +30,7 @@ Enemy.prototype.update = function(dt) {
 
 // Check collision, if true, return char and restart score
 Enemy.prototype.handleCollision = function() {
-    if (this.x < player.x + 38 && this.x + 55 > player.x &&
-        this.y === player.y) {
-  		score = 0;
-  		document.getElementById('score').textContent = score;
+    if (this.x < player.x + 38 && this.x + 55 > player.x && this.y === player.y) {
       this.decreaseHeart();
   		player.reset();
     }
@@ -52,6 +49,9 @@ Enemy.prototype.decreaseHeart = function() {
 function displayResult() {
   var el = document.querySelector(".result-modal");
   el.style.display = "block";
+
+  var result = document.querySelector("#result");
+  result.textContent = score;
 
   var button = document.querySelector(".button");
   button.addEventListener("click", function() {
@@ -74,6 +74,9 @@ function restartGame() {
   for (var i=0; i<3; i++) {
     heartDiv.appendChild(img.cloneNode(true));
   }
+  // Make score zero and display
+  score = 0;
+  document.getElementById('score').textContent = score;
 }
 
 // Draw the enemy on the screen, required method for game
