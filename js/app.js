@@ -6,7 +6,7 @@ var Enemy = function() {
     this.x = -500 + randomX;
     this.y = 58 + randomY*83;
     // Define its speed
-    var randomSpeed = Math.floor(Math.random() * 200);;
+    var randomSpeed = Math.floor(Math.random() * 200);
     this.speed = 150 + randomSpeed;
     // The image/sprite for our enemies
     this.sprite = 'images/enemy-bug.png';
@@ -23,7 +23,7 @@ Enemy.prototype.update = function(dt) {
       // Remove the enemy that leaves the canvas and create a new one
       var index = allEnemies.indexOf(this);
       allEnemies.splice(index, 1);
-      allEnemies.push(new Enemy);
+      allEnemies.push(new Enemy());
     }
     // Check whether the enemy collide with the player
     this.handleCollision();
@@ -44,7 +44,7 @@ Enemy.prototype.decreaseHeart = function() {
   if (hearts.length === 0) {
     displayResult();
   }
-}
+};
 
 // Function to display result-modal
 function displayResult() {
@@ -94,7 +94,7 @@ var Player = function() {
   this.x = this.startingX;
   this.y = this.startingY;
   this.sprite = 'images/char-boy.png';
-}
+};
 
 // Check whether player reached to water
 Player.prototype.update = function() {
@@ -144,8 +144,8 @@ Player.prototype.handleInput = function(allowedKeys) {
     case "up":
     if (this.y>-25) {
       this.y-=83;
-      break;
     }
+    break;
     case "down":
     if (this.y<390) {
       this.y+=83;
@@ -160,7 +160,7 @@ var allEnemies = [];
 var enemyNumber = 6;
 function createEnemies() {
   for (var i = 0; i<enemyNumber; i++) {
-    allEnemies.push(new Enemy);
+    allEnemies.push(new Enemy());
   }
 }
 createEnemies();
