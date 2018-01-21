@@ -24,10 +24,18 @@ Enemy.prototype.update = function(dt) {
     } else {
       this.x = -200
     }
-    handleCollision();
+    var handle = this.handleCollision.bind(this);
+    handle();
 };
 
-function handleCollision(){
+// Check collision, if true, return char and restart score
+Enemy.prototype.handleCollision = function() {
+    if (this.x < player.x + 38 && this.x + 55 > player.x &&
+        this.y === player.y) {
+  		score = 0;
+  		document.getElementById('score').textContent = score;
+  		player.reset();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
