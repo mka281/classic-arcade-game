@@ -2,9 +2,9 @@
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    var randomX = Math.floor(Math.random() * 1000);
+    var randomX = Math.floor(Math.random() * 500);
     var randomY = Math.floor(Math.random() * 3);
-    this.x = -1000 + randomX;
+    this.x = -500 + randomX;
     this.y = 58 + randomY*83;
     var randomSpeed = Math.floor(Math.random() * 200);;
     this.speed = 150 + randomSpeed;
@@ -22,7 +22,9 @@ Enemy.prototype.update = function(dt) {
     if (this.x < 505) {
       this.x += (this.speed * dt);
     } else {
-      this.x = -200
+      var index = allEnemies.indexOf(this);
+      allEnemies.splice(index, 1);
+      allEnemies.push(new Enemy);
     }
     var handleCollision = this.handleCollision.bind(this);
     handleCollision();
