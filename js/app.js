@@ -1,11 +1,13 @@
 // Enemies our player must avoid
-var Enemy = function(x,y) {
+var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = x;
-    this.y = y;
-    var speed;
-    this.speed = speed;
+    var randomX = Math.floor(Math.random() * Math.floor(200));
+    var randomY = Math.floor(Math.random() * Math.floor(3));
+    this.x = -300 + randomX;
+    this.y = 58 + randomY*83;
+    var randomSpeed = Math.floor(Math.random() * Math.floor(100));;
+    this.speed = 150 + randomSpeed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -17,7 +19,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.speed * dt;
+    if (this.x < 505) {
+      this.x += (this.speed * dt);
+    } else {
+      this.x = -200
+    }
     handleCollision();
 };
 
@@ -70,7 +76,7 @@ Player.prototype.handleInput = function(allowedKeys) {
       }
       break;
     case "up":
-      // There is no checling for border here, because in that case reset function will be called
+      // There is no checking for border here, because in that case reset function will be called
       this.y-=83;
       break;
     case "down":
@@ -85,9 +91,9 @@ Player.prototype.handleInput = function(allowedKeys) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-var enemyNumber = 5;
+var enemyNumber = 6;
 for (var i = 0; i<enemyNumber; i++) {
-  allEnemies.push(new Enemy);
+  allEnemies.push(new Enemy());
 }
 
 // Place the player object in a variable called player
