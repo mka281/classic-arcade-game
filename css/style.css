@@ -2,6 +2,17 @@ body {
     text-align: center;
 }
 
-p {
+#score-panel {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+#score-panel p {
     font-size: 2em;
+    margin-bottom: 0;
+}
+
+#score-panel img {
+  width: 3%;
+  height: auto;
 }
