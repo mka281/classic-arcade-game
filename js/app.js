@@ -1,40 +1,40 @@
 // Enemies our player must avoid
 var Enemy = function() {
-    // Define a starting point for enemy
-    var randomX = Math.floor(Math.random() * 500);
-    var randomY = Math.floor(Math.random() * 3);
-    this.x = -500 + randomX;
-    this.y = 58 + randomY*83;
-    // Define its speed
-    var randomSpeed = Math.floor(Math.random() * 200);
-    this.speed = 150 + randomSpeed;
-    // The image/sprite for our enemies
-    this.sprite = 'images/enemy-bug.png';
+  // Define a starting point for enemy
+  var randomX = Math.floor(Math.random() * 500);
+  var randomY = Math.floor(Math.random() * 3);
+  this.x = -500 + randomX;
+  this.y = 58 + randomY*83;
+  // Define its speed
+  var randomSpeed = Math.floor(Math.random() * 200);
+  this.speed = 150 + randomSpeed;
+  // The image/sprite for our enemies
+  this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // dt parameter will ensure the game runs at the same speed for all computers.
-    if (this.x < 505) {
-      // Move to the right according to enemy's speed
-      this.x += (this.speed * dt);
-    } else {
-      // Remove the enemy that leaves the canvas and create a new one
-      var index = allEnemies.indexOf(this);
-      allEnemies.splice(index, 1);
-      allEnemies.push(new Enemy());
-    }
-    // Check whether the enemy collide with the player
-    this.handleCollision();
+  // dt parameter will ensure the game runs at the same speed for all computers.
+  if (this.x < 505) {
+    // Move to the right according to enemy's speed
+    this.x += (this.speed * dt);
+  } else {
+    // Remove the enemy that leaves the canvas and create a new one
+    var index = allEnemies.indexOf(this);
+    allEnemies.splice(index, 1);
+    allEnemies.push(new Enemy());
+  }
+  // Check whether the enemy collide with the player
+  this.handleCollision();
 };
 
 // Check collision, if true, return char and restart score
 Enemy.prototype.handleCollision = function() {
-    if (this.x < player.x + 38 && this.x + 55 > player.x && this.y === player.y) {
-      this.decreaseHeart();
-  		player.reset();
-    }
+  if (this.x < player.x + 38 && this.x + 55 > player.x && this.y === player.y) {
+    this.decreaseHeart();
+		player.reset();
+  }
 };
 
 // Decrease heart number if collision happened

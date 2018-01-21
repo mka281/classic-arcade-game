@@ -60,15 +60,18 @@ body {
 
   box-shadow: 2px 5px 10px #e4e4e4;
 }
+
 .button:hover {
-    transition: all 150ms linear;
-    opacity: .85;
+  transition: all 150ms linear;
+  opacity: .85;
 }
+
 .button:active {
-    transition: all 150ms linear;
-    opacity: .75;
+  transition: all 150ms linear;
+  opacity: .75;
 }
+
 .button:focus {
-    outline: 1px dotted #959595;
-    outline-offset: -4px;
+  outline: 1px dotted #959595;
+  outline-offset: -4px;
 }
