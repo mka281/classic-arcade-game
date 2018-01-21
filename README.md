@@ -2,11 +2,11 @@ This project is created for Udacity's [Front-end Web Developer Nanodegree Progra
 
 ## To reach the game:
 
-### 1. Visit mka281.github.io/classic-arcade-game
+1. Visit [here](mka281.github.io/classic-arcade-game)
 
 or
 
-### 2. Clone / download this repository, then open index.html
+2. Clone / download this repository, then open index.html
 
 
 ## Game instructions:
