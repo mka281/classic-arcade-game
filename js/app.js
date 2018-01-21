@@ -47,8 +47,16 @@ var Player = function() {
 // Check whether player reached to water
 Player.prototype.update = function() {
   if (this.y === -25) {
+    this.success();
     this.reset();
   }
+};
+
+// Return char to starting point
+var score = 0;
+Player.prototype.success = function() {
+  score += 1;
+  document.getElementById("score").textContent = score;
 };
 
 // Return char to starting point
@@ -76,9 +84,10 @@ Player.prototype.handleInput = function(allowedKeys) {
       }
       break;
     case "up":
-      // There is no checking for border here, because in that case reset function will be called
-      this.y-=83;
-      break;
+      if (this.y>-25) {
+        this.y-=83;
+        break;
+      }
     case "down":
       if (this.y<390) {
         this.y+=83;
@@ -93,7 +102,7 @@ Player.prototype.handleInput = function(allowedKeys) {
 var allEnemies = [];
 var enemyNumber = 6;
 for (var i = 0; i<enemyNumber; i++) {
-  allEnemies.push(new Enemy());
+  allEnemies.push(new Enemy);
 }
 
 // Place the player object in a variable called player
