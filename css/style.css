@@ -2,6 +2,9 @@ body {
     text-align: center;
 }
 
+/*
+ * Styles for score-panel
+ */
 #score-panel {
   padding-right: auto;
   padding-left: auto;
@@ -15,4 +18,59 @@ body {
 #score-panel img {
   width: 4%;
   height: auto;
+}
+
+
+/*
+ * Styles for result modal
+ */
+.result-modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  padding-top: 15%;
+  z-index: 1;
+  text-align: center;
+  background-color: rgba(230, 230, 230, 1);
+  font-size: 28px;
+}
+
+.result-modal span {
+  font-weight: 800;
+  font-size: 1.2em;
+  color: #0407d8;
+}
+
+/*
+ * Button from https://codepen.io/simonbusborg/pen/cyxad
+ */
+.result-modal .button {
+  cursor: pointer;
+  transition: all 150ms linear;
+
+  color: #FFFFFF;
+  background-color: #3dd28d;
+  border: 0 none;
+  border-radius: 4px;
+
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  box-shadow: 2px 5px 10px #e4e4e4;
+
+  &:hover {
+    transition: all 150ms linear;
+    opacity: .85;
+  }
+  &:active {
+    transition: all 150ms linear;
+    opacity: .75;
+  }
+  &:focus {
+    outline: 1px dotted #959595;
+    outline-offset: -4px;
+  }
 }

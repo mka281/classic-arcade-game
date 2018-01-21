@@ -48,6 +48,32 @@ Enemy.prototype.decreaseHeart = function() {
   }
 }
 
+// Function to display result-modal
+function displayResult() {
+  var el = document.querySelector(".result-modal");
+  el.style.display = "block";
+
+  var button = document.querySelector(".button");
+  button.addEventListener("click", function() {
+    el.style.display = "none";
+    restartGame();
+  });
+}
+
+// Create enemies again
+function restartGame() {
+  this.allEnemies = [];
+  createEnemies();
+  var heartDiv = document.querySelector("#score-panel");
+  var img = document.createElement("img");
+  img.src = "images/Heart.png";
+  img.classList.add("heart");
+  for (var i=0; i<3; i++) {
+    heartDiv.innerHTML = "";
+    heartDiv.appendChild(img.cloneNode(true));
+  }
+}
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -119,9 +145,15 @@ Player.prototype.handleInput = function(allowedKeys) {
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 var enemyNumber = 6;
-for (var i = 0; i<enemyNumber; i++) {
-  allEnemies.push(new Enemy);
+
+// Create enemies
+function createEnemies() {
+  for (var i = 0; i<enemyNumber; i++) {
+    allEnemies.push(new Enemy);
+  }
 }
+createEnemies();
+
 
 // Place the player object in a variable called player
 var player = new Player ();
