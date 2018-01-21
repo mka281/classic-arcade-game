@@ -60,16 +60,18 @@ function displayResult() {
   });
 }
 
-// Create enemies again
+// Create enemies and hearts again
 function restartGame() {
+  // Create Enemies
   this.allEnemies = [];
   createEnemies();
-  var heartDiv = document.querySelector("#score-panel");
+  // Create hearts
+  var heartDiv = document.querySelector("#heart-div");
   var img = document.createElement("img");
   img.src = "images/Heart.png";
   img.classList.add("heart");
+  heartDiv.innerHTML = "";
   for (var i=0; i<3; i++) {
-    heartDiv.innerHTML = "";
     heartDiv.appendChild(img.cloneNode(true));
   }
 }
