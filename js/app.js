@@ -124,6 +124,12 @@ Player.prototype.render = function() {
 
 // Move the char if it did not reach to the border
 Player.prototype.handleInput = function(allowedKeys) {
+  var el = document.querySelector(".result-modal");
+  // Return if game is finished
+  if (el.style.display === "block") {
+    return;
+  }
+  // Otherwise, handle in
   switch (allowedKeys) {
     case "left":
     if (this.x>0) {
